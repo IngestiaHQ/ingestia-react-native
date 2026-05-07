@@ -17,4 +17,10 @@ Pod::Spec.new do |s|
   s.private_header_files = "ios/**/*.h"
 
   install_modules_dependencies(s)
+
+  spm_dependency(s,
+    url: 'https://github.com/IngestiaHQ/ingestia-swift.git',
+    requirement: {kind: 'upToNextMajorVersion', minimumVersion: '1.0.0'},
+    products: ['IngestiaSwift']
+  )
 end

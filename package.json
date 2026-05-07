@@ -1,6 +1,6 @@
 {
-  "name": "ingestia-react-native",
-  "version": "0.1.0",
+  "name": "@ingestia/react-native",
+  "version": "1.0.0",
   "description": "Ingestia React Native client",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -56,7 +56,8 @@
   },
   "homepage": "https://github.com/IngestiaHQ/ingestia-react-native#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^20.5.0",
