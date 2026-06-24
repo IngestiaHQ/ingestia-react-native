@@ -19,19 +19,10 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
 
-      - name: Remove _authToken from .npmrc to enable OIDC exchange
-        run: sed -i '/\/_authToken/d' "$NPM_CONFIG_USERCONFIG"
-
-      - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Build
-        run: yarn prepare
-
-      - name: Publish
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ''
+      - run: yarn install --immutable
+      - run: yarn prepare
+      - run: npm publish --provenance --access public
