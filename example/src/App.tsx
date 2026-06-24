@@ -13,9 +13,7 @@ import {
 import {
   IngestiaClient,
   IngestiaProvider,
-  useIdentify,
   useIngestia,
-  useTrack,
 } from '@ingestia/react-native';
 
 const client = new IngestiaClient({
@@ -33,9 +31,7 @@ export default function App() {
 }
 
 function DemoScreen() {
-  const ingestia = useIngestia();
-  const track = useTrack();
-  const identify = useIdentify();
+  const { track, identify, initialize, flush, destroy } = useIngestia();
 
   const [log, setLog] = useState<string[]>([]);
   const [alias, setAlias] = useState('');
@@ -63,7 +59,7 @@ function DemoScreen() {
   );
 
   useEffect(() => {
-    ingestia.initialize().then(() => {
+    initialize().then(() => {
       sessionStartRef.current = Date.now();
       doTrack('app_open', { source: 'launcher' });
       doTrack('session_start');
@@ -83,7 +79,7 @@ function DemoScreen() {
 
     return () => {
       sub.remove();
-      ingestia.flush().finally(() => ingestia.destroy());
+      flush().finally(() => destroy());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -236,7 +232,7 @@ function DemoScreen() {
 
         <TouchableOpacity
           style={[styles.btn, styles.btnPrimary]}
-          onPress={() => ingestia.flush().then(() => append('✓ flush()'))}
+          onPress={() => flush().then(() => append('✓ flush()'))}
         >
           <Text style={styles.btnPrimaryText}>Flush</Text>
         </TouchableOpacity>
