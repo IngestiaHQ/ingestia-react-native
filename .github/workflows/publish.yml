@@ -22,6 +22,9 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Remove placeholder auth token to enable OIDC
+        run: npm config delete //registry.npmjs.org/:_authToken
+
       - name: Install dependencies
         run: yarn install --immutable
 
