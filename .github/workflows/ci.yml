@@ -162,6 +162,10 @@ jobs:
           bundler-cache: true
           working-directory: example
 
+      - name: Configure GitHub credentials for SPM
+        if: env.turbo_cache_hit != 1
+        run: git config --global url."https://x-access-token:${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
+
       - name: Install cocoapods
         if: env.turbo_cache_hit != 1 && steps.cocoapods-cache.outputs.cache-hit != 'true'
         run: |

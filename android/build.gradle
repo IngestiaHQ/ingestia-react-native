@@ -62,6 +62,12 @@ android {
   }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force "org.jetbrains.kotlin:kotlin-stdlib:${getExtOrDefault('kotlinVersion')}"
+  }
+}
+
 dependencies {
   implementation "com.facebook.react:react-android"
   implementation "dev.ingestia:android:[1.0.0,2.0.0)"
