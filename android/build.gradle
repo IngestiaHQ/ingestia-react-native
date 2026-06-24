@@ -70,5 +70,5 @@ configurations.all {
 
 dependencies {
   implementation "com.facebook.react:react-android"
-  implementation "dev.ingestia:android:[1.0.0,2.0.0)"
+  implementation "dev.ingestia:android:1.0.2"
 }
