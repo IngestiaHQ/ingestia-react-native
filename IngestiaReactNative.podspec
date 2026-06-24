@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   spm_dependency(s,
     url: 'https://github.com/IngestiaHQ/ingestia-swift.git',
-    requirement: {kind: 'exactVersion', minimumVersion: '1.0.0'},
+    requirement: {kind: 'exactVersion', version: '1.0.0'},
     products: ['IngestiaSwift']
   )
 end
